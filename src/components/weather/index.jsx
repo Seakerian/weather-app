@@ -7,11 +7,13 @@ export default function Weather() {
   const [weatherData, setWeatherData] = useState(null);
   const [error, setError] = useState("");
 
+  const apiKey = process.env.REACT_APP_API_KEY;
+
   async function fetchWeatherData(param) {
     setLoading(true);
     try {
       const response = await fetch(
-        `https://api.openweathermap.org/data/2.5/weather?q=${param}&appid=cd04f4bbfc24fc29261ec05bc04a5484&units=metric`
+        `https://api.openweathermap.org/data/2.5/weather?q=${param}&appid=${apiKey}&units=metric`
       );
 
       if (!response.ok) {
